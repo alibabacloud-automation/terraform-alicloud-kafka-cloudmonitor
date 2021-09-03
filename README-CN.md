@@ -29,11 +29,10 @@ terraform-alicloud-message-transfer-kafka
 ## 用法
 
 ```hcl
-module "tf-message-transfer-kafka" {
-  profile           = "Your-Profile-Name"
-  region            = "cn-hangzhou"
-  source            = "terraform-alicloud-modules/message-transfer-kafka/alicloud"
+module "tf-kafka-cloudmonitor" {
+  source            = "terraform-alicloud-modules/kafka-cloudmonitor/alicloud"
   name              = "tf-message-transfer-kafka"
+  vswitch_id        = "1234"
 }
 ```
 
