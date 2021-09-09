@@ -1,6 +1,6 @@
-Terraform module which creates Kafka and cloudMonitor instance on Alibaba Cloud  
+Terraform module which creates Kafka and CloudMonitor instance on Alibaba Cloud  
 
-terraform-alicloud-message-transfer-kafka
+terraform-alicloud-kafka-cloudmonitor
 ---
 
 English | [简体中文](README-CN.md)
