@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// An example of how to test the simple Terraform module in examples/terraform-basic-example using Terratest.
+// An example of how to test the simple Terraform module in examples/complete using Terratest.
 // Make sure you have the dep binary, https://github.com/golang/dep
 // Run 'dep ensure' before run test cases.
 
@@ -16,14 +16,13 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "./example/",
+		TerraformDir: "../examples/complete",
 
 		// Variables to pass to our Terraform code using -var options
 
 		// Disable colors in Terraform commands, so it's easier to parse stdout/stderr
 		NoColor: true,
 	}
-
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
@@ -35,5 +34,5 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	thisKafkaInstanceName := terraform.Output(t, terraformOptions, "kafka_instance_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, thisKafkaInstanceName,thisKafkaInstanceName)
+	assert.Equal(t, thisKafkaInstanceName, thisKafkaInstanceName)
 }
