@@ -7,11 +7,13 @@ data "alicloud_cms_alarm_contact_groups" "default" {
 }
 
 module "vpc" {
-  source             = "alibaba/vpc/alicloud"
+  source  = "alibaba/vpc/alicloud"
+  version = "~> 1.11.0"
+
   create             = true
   vpc_cidr           = "172.16.0.0/16"
   vswitch_cidrs      = ["172.16.0.0/21"]
-  availability_zones = [data.alicloud_zones.default.zones.0.id]
+  availability_zones = [data.alicloud_zones.default.zones[0].id]
 }
 
 module "example" {
@@ -30,7 +32,6 @@ module "example" {
   consumer_id = "CID-alikafkaGroupDatasourceName"
 
   #instance_disk_capacity
-  alarm_user_id = "test"
 
   disk_capacity_enable_alarm_rule             = var.disk_capacity_enable_alarm_rule
   disk_capacity_alarm_rule_name               = var.disk_capacity_alarm_rule_name
@@ -47,7 +48,7 @@ module "example" {
   #instance_message_input
   instance_message_input_enable_alarm_rule             = var.instance_message_input_enable_alarm_rule
   instance_message_input_alarm_rule_name               = var.instance_message_input_alarm_rule_name
-  alarm_instance_message_input_metric                  = "instance_disk_capacity"
+  alarm_instance_message_input_metric                  = "instance_message_input"
   instance_message_input_alarm_rule_statistics         = var.instance_message_input_alarm_rule_statistics
   instance_message_input_alarm_rule_operator           = var.instance_message_input_alarm_rule_operator
   instance_message_input_alarm_rule_threshold          = var.instance_message_input_alarm_rule_threshold
@@ -60,7 +61,7 @@ module "example" {
   #instance_message_output
   instance_message_output_enable_alarm_rule             = var.instance_message_output_enable_alarm_rule
   instance_message_output_alarm_rule_name               = var.instance_message_output_alarm_rule_name
-  alarm_instance_message_output_metric                  = "instance_disk_capacity"
+  alarm_instance_message_output_metric                  = "instance_message_output"
   instance_message_output_alarm_rule_statistics         = var.instance_message_output_alarm_rule_statistics
   instance_message_output_alarm_rule_operator           = var.instance_message_output_alarm_rule_operator
   instance_message_output_alarm_rule_threshold          = var.instance_message_output_alarm_rule_threshold
