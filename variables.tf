@@ -54,12 +54,6 @@ variable "zone_id" {
   default     = ""
 }
 
-variable "internet_max_bandwidth_out" {
-  description = "The specification of the internet max bandwidth out."
-  type        = number
-  default     = 10
-}
-
 ##############################################################
 #variables for alicloud_cms_alarm
 ##############################################################
@@ -102,7 +96,7 @@ variable "disk_capacity_alarm_rule_operator" {
 variable "disk_capacity_alarm_rule_threshold" {
   description = "Alarm threshold value, which must be a numeric value currently. "
   type        = string
-  default     = "90"
+  default     = "35"
 }
 
 variable "disk_capacity_times" {
@@ -127,12 +121,6 @@ variable "disk_capacity_alarm_rule_effective_interval" {
   description = "The interval of effecting alarm rule. It foramt as 'hh:mm-hh:mm', like '0:00-4:00'."
   type        = string
   default     = "0:00-2:00"
-}
-
-variable "alarm_user_id" {
-  description = "The alarm of userId."
-  type        = string
-  default     = ""
 }
 
 ##############################################################
